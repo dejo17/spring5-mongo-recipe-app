@@ -2,9 +2,14 @@ package guru.springframework.repositories;
 
 import guru.springframework.bootstrap.RecipeBootstrap;
 import guru.springframework.domain.UnitOfMeasure;
+import guru.springframework.repositories.reactive.CategoryReactiveRepository;
+import guru.springframework.repositories.reactive.RecipeReactiveRepository;
+import guru.springframework.repositories.reactive.UnitOfMeasureReactiveRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -21,6 +26,7 @@ import static org.junit.Assert.assertEquals;
 @DataMongoTest
 public class UnitOfMeasureRepositoryIT {
 
+
     @Autowired
     UnitOfMeasureRepository unitOfMeasureRepository;
 
@@ -32,6 +38,8 @@ public class UnitOfMeasureRepositoryIT {
 
     @Before
     public void setUp() throws Exception {
+
+        MockitoAnnotations.initMocks(this);
 
         recipeRepository.deleteAll();
         unitOfMeasureRepository.deleteAll();
